@@ -40,3 +40,4 @@ C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Home
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.csproj.AssemblyReference.cache
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Calender.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Classes.cshtml.g.cs
+C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddEvent.cshtml.g.cs
