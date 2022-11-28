@@ -37,7 +37,6 @@ C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.genruntim
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.csproj.CopyComplete
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Homework.cshtml.g.cs
-C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.csproj.AssemblyReference.cache
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Calender.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Classes.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddEvent.cshtml.g.cs
