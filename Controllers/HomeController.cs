@@ -43,7 +43,7 @@ namespace TimeToStudy.Controllers
             return View();
         }
 
-        public IActionResult Calender()
+        public IActionResult Calendar()
         {
             return View();
         }
