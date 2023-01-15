@@ -1,8 +1,28 @@
 {
   "version": 2,
-  "dgSpecHash": "uZiyMV0KdHtT1rQYhPd4zIwrfUvm9RXDNQjCzgOCJsQwtzIrtXR+KI+Aio8AvY59dTINBGalmiAZqf0ACXwjrg==",
+  "dgSpecHash": "m+e0Ag8WQwVtHBJe7YPJLgXR1rEHpFkT4ZWpksa2EXY/rgGIn4XelGBioBmvbMF/mLIWNDxTUMEAqZ/jHtqUCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\2.2.0\\microsoft.extensions.caching.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.extensions.caching.memory\\2.2.0\\microsoft.extensions.caching.memory.2.2.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.2.0\\microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.extensions.options\\2.2.0\\microsoft.extensions.options.2.2.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\syncfusion.compression.net.core\\20.4.0.42\\syncfusion.compression.net.core.20.4.0.42.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\syncfusion.ej2.pdfviewer.aspnet.core.windows\\20.4.0.42\\syncfusion.ej2.pdfviewer.aspnet.core.windows.20.4.0.42.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\syncfusion.licensing\\20.4.0.42\\syncfusion.licensing.20.4.0.42.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\syncfusion.pdf.net.core\\20.4.0.42\\syncfusion.pdf.net.core.20.4.0.42.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

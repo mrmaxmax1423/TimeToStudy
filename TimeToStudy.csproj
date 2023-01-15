@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows" Version="20.4.0.42" />
+  </ItemGroup>
+
 </Project>

@@ -1,23 +1,37 @@
-﻿@{
-    ViewData["Title"] = "AddEvent";
+﻿@model EventViewModel
+@{
+    Layout = null;
 }
-@model Event
-<div>
-    <img src="~/images/AddEvent.png" alt="Add Event Place Holder">
-    <div class="form-group">
-        <label asp-for="  Name">Title:</label>
-        <input type="text" asp-for="Name" class="form-control">
-    </div>
-    <div class="form-group">
-        <label asp-for="  Description">Description:</label>
-        <input type="text" asp-for="Description" class="form-control">
-    </div>
-    <div class="form-group">
-        <label asp-for="  DueDate">Event Date:</label>
-        <input type="text" asp-for="DueDate" class="form-control">
-    </div>
-</div>
-<form asp-action="Add" method="post">
-    <button type="submit" class="btn btn-primary">Add</button>
-    <a asp-action="Index" class="btn btn-primary">Cancel</a>
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+        <title>Add New Event</title>
+        <style>
+            /* add CSS styles here */
+        </style>
+    </head>
+    <body>
+        <h1>Add New Event</h1>
+        <form asp-action="AddEvent" method="post">
+            <div>
+                <label asp-for="EventLabel">Event Label</label>
+                <input asp-for="EventLabel" />
+            </div>
+            <div>
+                <label asp-for="EventDescription">Event Description</label>
+                <input asp-for="EventDescription" />
+            </div>
+            <div>
+                <label asp-for="EventLength">Event Length</label>
+                <input asp-for="EventLength" />
+            </div>
+        
+            <div>
+                <button type="submit">AddEvent</button>
+                <a asp-action="AddEvent">Clear</a>
+            </div>
+        </form>
+    </body>
+</html>
+

@@ -43,6 +43,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows": {
+              "target": "Package",
+              "version": "[20.4.0.42, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
