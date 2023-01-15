@@ -1,0 +1,49 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Add Event";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+        <title>Add New Event</title>
+        <style>
+            /* add CSS styles here */
+        </style>
+    </head>
+    <body>
+        <h1>Add New Event</h1>
+        <form asp-action="Event" method="post">
+            <div>
+                <label asp-for="EventLabel">Event Label:</label>
+                <input asp-for="EventLabel" />
+            </div>
+            <div>
+                <label asp-for="EventDescription">Description:</label>
+                <input asp-for="EventDescription" />
+            </div>
+            <div>
+                <label asp-for="EventLength">Length:</label>
+                <input asp-for="EventLength" />
+            </div>
+            <div>
+                <label asp-for="Reccuring">Reccuring?</label>
+                <input type="checkbox" name="yourPropertyName" value="true" checked />
+            </div>
+            <div>
+                <label asp-for="SetTime">Set Time?</label>
+                <input type="checkbox" name="yourPropertyName" value="true" checked />
+            </div>
+            <div>
+                <label asp-for="EventTime">Event Start:</label>
+                <input asp-for="EventTime" />
+            </div>
+            <div>
+                <button type="submit">Add Event</button>
+                <a asp-action="AddEvent">Clear</a>
+            </div>
+        </form>
+    </body>
+</html>
+

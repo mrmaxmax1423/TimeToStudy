@@ -35,13 +35,10 @@ C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.dll
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.pdb
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.genruntimeconfig.cache
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.csproj.CopyComplete
-C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Homework.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Classes.cshtml.g.cs
-C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddEvent.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Profile.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\TimeToStudy.csproj.AssemblyReference.cache
-C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Home\Calendar.cshtml.g.cs
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\x64\pdfium.dll
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\x86\pdfium.dll
@@ -57,3 +54,5 @@ C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
 C:\Users\maxim\Desktop\TimeToStudy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Event\AddEvent.cshtml.g.cs
+C:\Users\maxim\Desktop\TimeToStudy\obj\Debug\netcoreapp3.1\Razor\Views\Event\Calendar.cshtml.g.cs
