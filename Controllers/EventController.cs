@@ -19,6 +19,11 @@ namespace TimeToStudy.Controllers
             return View();
         }
 
+        public IActionResult AddNewEvent()
+        {
+            return View();
+        }
+
         public IActionResult Calendar()
         {
             return View();

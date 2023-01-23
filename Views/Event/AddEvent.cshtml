@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Add New Event</h1>
-        <form asp-action="Event" method="post">
+        <form asp-controller="Event" asp-action="AddNewEvent" method="post">
             <div>
                 <label asp-for="EventLabel">Event Label:</label>
                 <input asp-for="EventLabel" />
@@ -35,13 +35,15 @@
                 <label asp-for="SetTime">Set Time?</label>
                 <input type="checkbox" name="yourPropertyName" value="true" checked />
             </div>
+            <!--            
             <div>
                 <label asp-for="EventTime">Event Start:</label>
                 <input asp-for="EventTime" />
-            </div>
+            </div> -->
+
             <div>
-                <button type="submit">Add Event</button>
-                <a asp-action="AddEvent">Clear</a>
+                <button type="submit" class="btn btn-primary">AddEvent</button>
+                <a asp-action="AddEvent" class="btn btn-primary">Cancel</a>
             </div>
         </form>
     </body>

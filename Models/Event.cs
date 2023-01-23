@@ -10,6 +10,7 @@ namespace TimeToStudy.Models
 {
     public class Event
     {
+        public string Id { get; set; }
         [Required(ErrorMessage = "Please input a Label.")]
         public string EventLabel { get; set; }
         [Required(ErrorMessage = "Please input a Description.")]
@@ -18,7 +19,9 @@ namespace TimeToStudy.Models
         public double EventLength { get; set; }
         public bool Reccuring { get; set; }
         public bool SetTime { get; set; }
+        /*
         public DateTime EventTime { get; set; }
+        */
     }
 
     /*
