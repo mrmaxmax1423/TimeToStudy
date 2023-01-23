@@ -5,13 +5,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimeToStudy.Models
 {
     public class Event
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         [Required(ErrorMessage = "Please input a Label.")]
+
         public string EventLabel { get; set; }
         [Required(ErrorMessage = "Please input a Description.")]
         public string EventDescription { get; set; }

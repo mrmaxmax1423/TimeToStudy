@@ -9,6 +9,10 @@ namespace TimeToStudy.Models
 {
     public class EventViewModel
     {
-
+        public EventViewModel()
+        {
+            CurrentEvent = new Event();
+        }
+        public Event CurrentEvent { get; set; }
     }
 }

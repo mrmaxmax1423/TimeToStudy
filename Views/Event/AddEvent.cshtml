@@ -1,4 +1,4 @@
-﻿@model Event
+﻿@model EventViewModel
 @{
     ViewData["Title"] = "Add Event";
     Layout = null;
@@ -14,25 +14,25 @@
     </head>
     <body>
         <h1>Add New Event</h1>
-        <form asp-controller="Event" asp-action="AddNewEvent" method="post">
+        <form asp-action="Add" method="post">
             <div>
-                <label asp-for="EventLabel">Event Label:</label>
-                <input asp-for="EventLabel" />
+                <label asp-for="CurrentEvent.EventLabel">Event Label:</label>
+                <input asp-for="CurrentEvent.EventLabel" />
             </div>
             <div>
-                <label asp-for="EventDescription">Description:</label>
-                <input asp-for="EventDescription" />
+                <label asp-for="CurrentEvent.EventDescription">Description:</label>
+                <input asp-for="CurrentEvent.EventDescription" />
             </div>
             <div>
-                <label asp-for="EventLength">Length:</label>
-                <input asp-for="EventLength" />
+                <label asp-for="CurrentEvent.EventLength">Length:</label>
+                <input asp-for="CurrentEvent.EventLength" />
             </div>
             <div>
-                <label asp-for="Reccuring">Reccuring?</label>
+                <label asp-for="CurrentEvent.Reccuring">Reccuring?</label>
                 <input type="checkbox" name="yourPropertyName" value="true" checked />
             </div>
             <div>
-                <label asp-for="SetTime">Set Time?</label>
+                <label asp-for="CurrentEvent.SetTime">Set Time?</label>
                 <input type="checkbox" name="yourPropertyName" value="true" checked />
             </div>
             <!--            
@@ -42,7 +42,7 @@
             </div> -->
 
             <div>
-                <button type="submit" class="btn btn-primary">AddEvent</button>
+                <button type="submit" class="btn btn-primary">Add</button>
                 <a asp-action="AddEvent" class="btn btn-primary">Cancel</a>
             </div>
         </form>
