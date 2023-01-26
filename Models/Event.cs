@@ -14,7 +14,6 @@ namespace TimeToStudy.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         [Required(ErrorMessage = "Please input a Label.")]
-
         public string EventLabel { get; set; }
         [Required(ErrorMessage = "Please input a Description.")]
         public string EventDescription { get; set; }
