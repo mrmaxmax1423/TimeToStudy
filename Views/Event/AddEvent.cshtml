@@ -35,11 +35,17 @@
                 <label asp-for="CurrentEvent.SetTime">Set Time?</label>
                 <input type="checkbox" name="yourPropertyName" value="true" checked />
             </div>
-            <!--            
-            <div>
-                <label asp-for="EventTime">Event Start:</label>
-                <input asp-for="EventTime" />
-            </div> -->
+            <!-- Needs to be changed to only appear if the user selects Set Time
+    <div>
+        <label asp-for="CurrentEvent.EventTime">Event Time:</label>
+        <input asp-for=" CurrentEvent.EventTime">
+    </div>
+        -->
+            <!--
+    <div>
+        <label asp-for="EventTime">Event Start:</label>
+        <input asp-for="EventTime" />
+    </div> -->
 
             <div>
                 <button type="submit" class="btn btn-primary">Add</button>

@@ -10,9 +10,11 @@ namespace TimeToStudy.Models
         public DbSet<Event> Events { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Event>().HasData(
-                new Event {Id = "001", EventDescription = "1", EventLabel = "2", EventLength = 3, Reccuring = false, },
-                new Event {Id = "002", EventDescription = "3", EventLabel = "4", EventLength = 5, Reccuring = true, }
+                new Event {EventId = "001", EventDescription = "1", EventLabel = "2", EventLength = 3, Reccuring = false /*, EventTime = new System.DateTime(2023)*/},
+                new Event {EventId = "002", EventDescription = "3", EventLabel = "4", EventLength = 5, Reccuring = true /*, EventTime = new System.DateTime(2023)*/}
             ); 
         }
     }

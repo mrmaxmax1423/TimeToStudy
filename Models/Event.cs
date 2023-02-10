@@ -12,18 +12,17 @@ namespace TimeToStudy.Models
     public class Event
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public string EventId { get; set; }
+
         [Required(ErrorMessage = "Please input a Label.")]
         public string EventLabel { get; set; }
         [Required(ErrorMessage = "Please input a Description.")]
         public string EventDescription { get; set; }
-        [Required(ErrorMessage = "Please input event Length.")]
+        [Required(ErrorMessage = "Please input Event Length.")]
         public double EventLength { get; set; }
         public bool Reccuring { get; set; }
         public bool SetTime { get; set; }
-        /*
-        public DateTime EventTime { get; set; }
-        */
+        //  public DateTime EventTime { get; set; }
     }
 
     /*

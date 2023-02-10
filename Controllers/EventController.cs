@@ -13,6 +13,7 @@ namespace TimeToStudy.Controllers
     {
         private EventContext context;
         public EventController(EventContext ctx) => context = ctx;
+
         public IActionResult Index()
         {
             return View();
@@ -21,6 +22,20 @@ namespace TimeToStudy.Controllers
         public IActionResult AddEvent()
         {
             return View();
+        }
+
+        [Route("[controller]s/{id?}")]
+        public IActionResult Calendar(int id)
+        {
+            List<Event> events;
+            events = context.Events
+                .OrderBy (e => e.EventId).ToList();
+
+            var model = new EventViewModel
+            {
+                Events = events
+            };
+            return View(model);
         }
 
         public IActionResult Add()
@@ -40,13 +55,16 @@ namespace TimeToStudy.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("AddEvent");
                 /*
                 model.Event = context.Events.ToList();
                 return View(model);
                 */
             }
         }
+
+        //Lists Events on the Calendar page
+
 
         //Missing Functionality
         [HttpPost]
@@ -70,11 +88,6 @@ namespace TimeToStudy.Controllers
             return View();
         }
         */
-
-        public IActionResult Calendar()
-        {
-            return View();
-        }
     }
 
 }

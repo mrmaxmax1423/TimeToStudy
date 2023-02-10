@@ -15,5 +15,13 @@ namespace TimeToStudy.Controllers
         {
             return View();
         }
+        public IActionResult Homework()
+        {
+            return View();
+        }
+        public IActionResult Profile()
+        {
+            return View();
+        }
     }
 }

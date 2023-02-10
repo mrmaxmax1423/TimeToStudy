@@ -1,4 +1,4 @@
-﻿@model Event
+﻿@model EventViewModel
 @{
     Layout = null;
 }
@@ -17,5 +17,26 @@
             <a asp-controller="Event" asp-action="AddEvent"
                class="list-group-item">Add New Event</a>
         </div>
+    </div>
+
+
+    <div class="col-sm-10">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Event Label</th>
+                    <th>Desciption</th>
+                    <th>Event Time</th>
+            </thead>
+            <tbody>
+                @foreach (var Event in Model.Events)
+                {
+                <tr>
+                    <td>@Event.EventLabel</td>
+                    <td>@Event.EventDescription</td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </html>
