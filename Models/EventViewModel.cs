@@ -9,7 +9,9 @@ namespace TimeToStudy.Models
 {
     public class EventViewModel
     {
+        //allows events to be stored in a list
         public List<Event> Events { get; set; }
+        //stores event being added in AddEvent
         public Event CurrentEvent { get; set; }
     }
 }

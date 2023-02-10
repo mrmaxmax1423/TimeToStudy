@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimeToStudy.Models
 {
+    //Classes will store information about how many credit hours and class times to generate events
     public class Classes
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

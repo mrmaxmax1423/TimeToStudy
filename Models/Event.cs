@@ -22,6 +22,8 @@ namespace TimeToStudy.Models
         public double EventLength { get; set; }
         public bool Reccuring { get; set; }
         public bool SetTime { get; set; }
+
+        //Need to figure out how to store a DateTime type into database to store when the event is
         //  public DateTime EventTime { get; set; }
     }
 

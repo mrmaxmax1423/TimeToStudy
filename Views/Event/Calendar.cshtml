@@ -39,9 +39,18 @@
                     <tr>
                         <td>@Event.EventLabel</td>
                         <td>@Event.EventDescription</td>
+                        <td>
+                            <form asp-action="DeleteEvent" method="post">
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                    </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+
 </html>
