@@ -8,19 +8,24 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\gudav\\.nuget\\packages\\": {}
+    "C:\\Users\\maxim\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Guy\\UC\\Fall22\\TimeToStudy\\TimeToStudy.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj",
       "projectName": "TimeToStudy",
-      "projectPath": "D:\\Guy\\UC\\Fall22\\TimeToStudy\\TimeToStudy.csproj",
-      "packagesPath": "C:\\Users\\gudav\\.nuget\\packages\\",
-      "outputPath": "D:\\Guy\\UC\\Fall22\\TimeToStudy\\obj\\",
+      "projectPath": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj",
+      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\gudav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
