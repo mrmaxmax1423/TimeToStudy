@@ -1,6 +1,6 @@
 ﻿@model EventViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Calendar";
 }
 <!DOCTYPE html>
 <html>
@@ -22,6 +22,11 @@
 
     <div class="col-sm-10">
         <table class="table table-bordered table-striped">
+            <colgroup>
+                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 30%;">
+            </colgroup>
             <thead>
                 <tr>
                     <th>Event Label</th>
@@ -31,10 +36,10 @@
             <tbody>
                 @foreach (var Event in Model.Events)
                 {
-                <tr>
-                    <td>@Event.EventLabel</td>
-                    <td>@Event.EventDescription</td>
-                </tr>
+                    <tr>
+                        <td>@Event.EventLabel</td>
+                        <td>@Event.EventDescription</td>
+                    </tr>
                 }
             </tbody>
         </table>

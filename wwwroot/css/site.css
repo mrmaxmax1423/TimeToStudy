@@ -23,7 +23,22 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+table {
+    border-collapse: collapse;
+}
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
 
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 2, 0, 0.05);
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
