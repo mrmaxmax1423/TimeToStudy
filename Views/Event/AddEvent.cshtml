@@ -1,0 +1,57 @@
+﻿@model EventViewModel
+@{
+    ViewData["Title"] = "Add Event";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+        <title>Add New Event</title>
+        <style>
+            /* add CSS styles here */
+        </style>
+    </head>
+    <body>
+        <h1>Add New Event</h1>
+        <form asp-action="Add" method="post">
+            <div>
+                <label asp-for="CurrentEvent.EventLabel">Event Label:</label>
+                <input asp-for="CurrentEvent.EventLabel" />
+            </div>
+            <div>
+                <label asp-for="CurrentEvent.EventDescription">Description:</label>
+                <input asp-for="CurrentEvent.EventDescription" />
+            </div>
+            <div>
+                <label asp-for="CurrentEvent.EventLength">Length:</label>
+                <input asp-for="CurrentEvent.EventLength" />
+            </div>
+            <div>
+                <label asp-for="CurrentEvent.Reccuring">Reccuring?</label>
+                <input type="checkbox" name="yourPropertyName" value="true" checked />
+            </div>
+            <div>
+                <label asp-for="CurrentEvent.SetTime">Set Time?</label>
+                <input type="checkbox" name="yourPropertyName" value="true" checked />
+            </div>
+            <!-- Needs to be changed to only appear if the user selects Set Time
+    <div>
+        <label asp-for="CurrentEvent.EventTime">Event Time:</label>
+        <input asp-for=" CurrentEvent.EventTime">
+    </div>
+        -->
+            <!--
+    <div>
+        <label asp-for="EventTime">Event Start:</label>
+        <input asp-for="EventTime" />
+    </div> -->
+
+            <div>
+                <button type="submit" class="btn btn-primary">Add</button>
+                <a asp-controller="Event" asp-action="Calendar" class="btn btn-primary">Return to Calendar page</a>
+            </div>
+        </form>
+    </body>
+</html>
+

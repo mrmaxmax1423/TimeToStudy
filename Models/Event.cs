@@ -1,20 +1,36 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimeToStudy.Models
 {
     public class Event
     {
-        [Required(ErrorMessage = "Please enter a name for the event.")]
-        public string Name { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string EventId { get; set; }
 
-        [Required(ErrorMessage = "Please enter a description for the event.")]
-        public string Description { get; set; }
+        [Required(ErrorMessage = "Please input a Label.")]
+        public string EventLabel { get; set; }
+        [Required(ErrorMessage = "Please input a Description.")]
+        public string EventDescription { get; set; }
+        [Required(ErrorMessage = "Please input Event Length.")]
+        public double EventLength { get; set; }
+        public bool Reccuring { get; set; }
+        public bool SetTime { get; set; }
 
-        [Required(ErrorMessage = "Please enter a due date.")]
-        public DateTime? DueDate { get; set; }
+        //Need to figure out how to store a DateTime type into database to store when the event is
+        //  public DateTime EventTime { get; set; }
     }
+
+    /*
+    public EventViewModel AddEvent()
+    {
+        string EventName = ;
+    }
+    */
 }
