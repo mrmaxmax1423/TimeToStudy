@@ -47,6 +47,7 @@ TestResults/
 *.rar
 *.tar
 *.zip
+*.vsidx
 ######################
 # Logs and databases #
 ######################
