@@ -105,6 +105,21 @@ namespace TimeToStudy.Controllers
             }
         }
 
+        //Pull From Canvas, missing conection and functionality
+        public static async void GetClasses()
+        {
+            string baseURL = $""; //URL connection
+            //API call should be in a TRY Catch
+            try
+            {
+
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+        }
+
 
         //Nonfunctional, need development to edit and delete events from the database
         [HttpPost]
