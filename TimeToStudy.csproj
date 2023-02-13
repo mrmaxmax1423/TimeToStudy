@@ -11,11 +11,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
-    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows" Version="20.4.0.42" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
