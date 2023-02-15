@@ -11,8 +11,7 @@ namespace TimeToStudy.Models
 {
     public class Event
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string EventId { get; set; }
+        public int EventId { get; set; }
 
         [Required(ErrorMessage = "Please input a Label.")]
         public string EventLabel { get; set; }
@@ -22,6 +21,8 @@ namespace TimeToStudy.Models
         public double EventLength { get; set; }
         public bool Reccuring { get; set; }
         public bool SetTime { get; set; }
+
+        //Need to figure out how to store a DateTime type into database to store when the event is
         //  public DateTime EventTime { get; set; }
     }
 

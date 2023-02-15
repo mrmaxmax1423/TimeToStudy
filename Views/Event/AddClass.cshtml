@@ -1,0 +1,62 @@
+﻿@model EventViewModel
+@{
+    ViewData["Title"] = "Add Class";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <title>Add New Class</title>
+    <style>
+        /* add CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Add New Class</h1>
+    <form asp-action="InputClass" method="post">
+        <div>
+            <label asp-for="CurrentClass.ClassName">Class Name:</label>
+            <input asp-for="CurrentClass.ClassName" />
+        </div>
+        <div>
+            <label asp-for="CurrentClass.ClassStartTime">Class Start Time:</label>
+            <input asp-for="CurrentClass.ClassStartTime" />
+        </div>
+        <div>
+            <label asp-for="CurrentClass.ClassLength">Length:</label>
+            <input asp-for="CurrentClass.ClassLength" />
+        </div>
+        <div>
+            <form >
+                <label for="Meeting Day">Meeting Days:</label>
+                <select name="weekday" id="weekday" multiple>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <!-- Needs to be changed to only appear if the user selects Set Time
+    <div>
+        <label asp-for="CurrentEvent.EventTime">Event Time:</label>
+        <input asp-for=" CurrentEvent.EventTime">
+    </div>
+        -->
+        <!--
+    <div>
+        <label asp-for="EventTime">Event Start:</label>
+        <input asp-for="EventTime" />
+    </div> -->
+
+        <div>
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a asp-controller="Event" asp-action="Classes" class="btn btn-primary">Return to Classes</a>
+        </div>
+    </form>
+</body>
+</html>
+
