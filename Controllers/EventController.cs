@@ -105,8 +105,8 @@ namespace TimeToStudy.Controllers
             }
         }
 
-        //Pull From Canvas, missing conection and functionality
-        public static async void GetClasses()
+        //Pulls users From Canvas, missing conection and functionality
+        public static async void GetCanvasClasses()
         {
             string baseURL = $""; //URL connection
             //API call should be in a TRY Catch
