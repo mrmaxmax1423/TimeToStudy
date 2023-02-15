@@ -11,8 +11,7 @@ namespace TimeToStudy.Models
 {
     public class Event
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string EventId { get; set; }
+        public int EventId { get; set; }
 
         [Required(ErrorMessage = "Please input a Label.")]
         public string EventLabel { get; set; }
