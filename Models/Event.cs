@@ -22,9 +22,10 @@ namespace TimeToStudy.Models
         public bool Reccuring { get; set; }
         public bool SetTime { get; set; }
 
-        //Need to figure out how to store a DateTime type into database to store when the event is
-        //  public DateTime EventTime { get; set; }
+        //Accept nulls, when generating schedules search for open times for events with null eventtimes
+        public DateTime? EventTime { get; set; }
     }
+
 
     /*
     public EventViewModel AddEvent()
