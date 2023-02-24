@@ -33,7 +33,7 @@ namespace TimeToStudy.Controllers
             //creates a list storing Events
             List<Event> events;
             //Fills list with events from DB
-            events = context.Event
+            events = context.Events
                 .OrderBy (e => e.EventId).ToList();
 
             //creates new model with a list of Events
@@ -51,7 +51,7 @@ namespace TimeToStudy.Controllers
             //creates a list storing Events
             List<Class> classes;
             //Fills list with events from DB
-            classes = context.Class
+            classes = context.Classes
                 .OrderBy(c => c.ClassId).ToList();
 
             //creates new model with a list of Events
@@ -70,11 +70,11 @@ namespace TimeToStudy.Controllers
             //if user input is valid
             if (ModelState.IsValid)
             {
-                context.Event.Add(model.CurrentEvent);
+                context.Events.Add(model.CurrentEvent);
                 context.SaveChanges();
                 return RedirectToAction("AddEvent");
             }
-            //if user input is in
+            //if user input is invalid
             else
             {
                 return RedirectToAction("AddEvent");
@@ -90,7 +90,7 @@ namespace TimeToStudy.Controllers
             //if user input is valid
             if (ModelState.IsValid)
             {
-                context.Class.Add(model.CurrentClass);
+                context.Classes.Add(model.CurrentClass);
                 context.SaveChanges();
                 return RedirectToAction("AddClass");
             }
@@ -125,17 +125,17 @@ namespace TimeToStudy.Controllers
         [HttpPost]
         public IActionResult Edit([FromRoute] string id, Event selected)
         {
-            context.Event.Update(selected);      //update selected event
+            context.Events.Update(selected);      //update selected event
             return RedirectToAction("AddEvent");
         }
 
         //Only Basics, Needs improvments
         [HttpPost]
-        public IActionResult DeleteEvent(Event selectedEvent)
+        public IActionResult DeleteEvent([FromRoute] string id, Event selectedEvent)
         {
-            context.Event.Remove(selectedEvent); //remove selected event from DB
-            //context.SaveChanges();                //save changes to DB
-            return RedirectToAction("Calendar");
+            context.Events.Remove(selectedEvent); //remove selected event from DB
+            context.SaveChanges();                //save changes to DB
+            return RedirectToAction("Calendar", new { ID = id } );
         }
         /*
         public IActionResult AddNewEvent()

@@ -23,10 +23,10 @@
     <div class="col-sm-10">
         <table style="width:65%" class="table table-bordered table-striped">
             <colgroup>
-                <col span="1" style="width: 25%;">
-                <col span="1" style="width: 55%;">
-                <col span="1" style="width: 10%;">
-                <col span="1" style="width: 10%;">
+                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 20%;">
             </colgroup>
             <thead>
                 <tr>
@@ -42,13 +42,15 @@
                 <tr>
                     <td>@Event.EventLabel</td>
                     <td>@Event.EventDescription</td>
-                    <td></td>
-                    <td></td>
+                    <td>@Event.EventTime</td>
+                    <td>@Event.EventTime</td>
                     <td>
-                        <form asp-action="EditEvent" method="post">
+                        <input type="hidden"
+                               name="@nameof(Event.EventId)" value="@Event.EventId" />
+                        <form asp-action="DeleteEvent" method="post">
                             <button type="submit"
                                     class="btn btn-primary btn-sm">
-                                Edit
+                                Delete
                             </button>
                         </form>
                     </td>

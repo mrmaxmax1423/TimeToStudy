@@ -31,15 +31,32 @@
                 <input type="checkbox" name="yourPropertyName" value="true" checked />
             </div>
             <div>
-                <label asp-for="CurrentEvent.SetTime">Set Time?</label>
-                <input type="checkbox" name="yourPropertyName" value="true" checked />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+            <script>
+                $(function () {
+                    $('#gridCheck1').change(function () {
+
+                        myFunction();
+                    });
+                });
+                $(document).ready(function () {
+                    myFunction();
+                });
+
+                function myFunction() {
+                    $('#ShowHideMe').toggle($('#gridCheck1').is(':checked'));
+                }
+            </script>
             </div>
-            <!-- Needs to be changed to only appear if the user selects Set Time
-    <div>
-        <label asp-for="CurrentEvent.EventTime">Event Time:</label>
-        <input asp-for=" CurrentEvent.EventTime">
-    </div>
-        -->
+            <div>
+                <label asp-for="CurrentEvent.SetTime">Set Time?</label>
+                <input type="checkbox" name="yourPropertyName" id="gridCheck1" value="false" unchecked />
+            </div>
+            <!-- Needs to be changed to only appear if the user selects Set Time        -->
+            <div id="ShowHideMe" style="display:none">
+                <label asp-for="CurrentEvent.EventTime">Event Time:</label>
+                <input asp-for=" CurrentEvent.EventTime">
+            </div>
             <!--
     <div>
         <label asp-for="EventTime">Event Start:</label>
