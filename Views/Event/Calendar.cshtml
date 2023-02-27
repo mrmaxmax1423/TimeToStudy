@@ -31,28 +31,39 @@
             <thead>
                 <tr>
                     <th>Event Label</th>
-                    <th>Desciption</th>
+                    <th>Description</th>
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th></th>
 </thead>
             <tbody>
-                @foreach (var Event in Model.Events)
+                @foreach (Event E in Model.Events)
                 {
                 <tr>
-                    <td>@Event.EventLabel</td>
-                    <td>@Event.EventDescription</td>
-                    <td>@Event.EventTime</td>
-                    <td>@Event.EventTime</td>
+                    <td>@E.EventLabel</td>
+                    <td>@E.EventDescription</td>
+                    <td>@E.EventTime</td>
+                    <td>@E.EventTime</td>
                     <td>
-                        <input type="hidden"
-                               name="@nameof(Event.EventId)" value="@Event.EventId" />
                         <form asp-action="DeleteEvent" method="post">
+                            <input type="hidden"
+                                   name="@nameof(Event.EventId)" value="@E.EventId" />
                             <button type="submit"
                                     class="btn btn-primary btn-sm">
                                 Delete
                             </button>
                         </form>
+                        <form asp-action="Edit" method="post">
+                            <input type="hidden"
+                                   name="@nameof(Event.EventId)" value="@E.EventId" />
+                            <button type="submit"
+                                    class="btn btn-primary btn-sm">
+                                Edit
+                            </button>
+                        </form>
+                        <div>
+                            <a asp-controller="Event" asp-action="CanvasList" class="btn btn-primary">Test</a>
+                        </div>
                     </td>
                 </tr>
                 }

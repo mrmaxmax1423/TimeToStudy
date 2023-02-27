@@ -6,13 +6,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TimeToStudy.Models;
+using Microsoft.AspNetCore.Authorization;
+using RestSharp;
+using Microsoft.Extensions.Configuration;
 
 namespace TimeToStudy.Controllers
 {
     public class EventController : Controller
     {
         private EventContext context;
-        public EventController(EventContext ctx) => context = ctx;
+        public EventController(EventContext ctx, IConfiguration configuration)
+        {
+            _canvasApiService = new CanvasApiService(configuration);
+            context = ctx;
+        }
 
         public IActionResult Index()
         {
@@ -106,27 +113,30 @@ namespace TimeToStudy.Controllers
         }
 
         //Pulls users From Canvas, missing conection and functionality
-        public static async void GetCanvasClasses()
+
+        //Creates Model holding information for API call to canvas
+        private readonly CanvasApiService _canvasApiService;
+
+        [Authorize]
+        //Returns a list of users courses to a blank webpage, needs to be processed and saved as classes (also filter for current class)
+        public async Task<IActionResult> CanvasList()
         {
-            string baseURL = $""; //URL connection
-            //API call should be in a TRY Catch
-            try
-            {
-
-            }
-            catch(Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
+            var courses = await _canvasApiService.GetCoursesAsync();
+            return Ok(courses);
         }
-
 
         //Nonfunctional, need development to edit and delete events from the database
         [HttpPost]
         public IActionResult Edit([FromRoute] string id, Event selected)
         {
-            context.Events.Update(selected);      //update selected event
-            return RedirectToAction("AddEvent");
+            string newDesc = "Test";//selected.EventDescription;
+            selected = context.Events.Find(selected.EventId);
+            selected.EventDescription = newDesc;
+            context.Events.Update(selected);
+            Console.WriteLine("A");
+            context.SaveChanges();
+
+            return RedirectToAction("Calendar", new { ID = id });
         }
 
         //Only Basics, Needs improvments
