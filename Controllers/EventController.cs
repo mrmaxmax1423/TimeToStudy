@@ -123,10 +123,19 @@ namespace TimeToStudy.Controllers
 
         //Nonfunctional, need development to edit and delete events from the database
         [HttpPost]
-        public IActionResult Edit([FromRoute] string id, Event selected)
+        public async Task<IActionResult> Edit(int? id)
         {
-            context.Events.Update(selected);      //update selected event
-            return RedirectToAction("AddEvent");
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var selectedEvent = await context.Events.FindAsync(id);
+            if(selectedEvent == null)
+            {
+                return NotFound();
+            }
+            return View(selectedEvent);
         }
 
         //Only Basics, Needs improvments
