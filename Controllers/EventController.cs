@@ -117,8 +117,7 @@ namespace TimeToStudy.Controllers
         //Creates Model holding information for API call to canvas
         private readonly CanvasApiService _canvasApiService;
 
-        [Authorize]
-        //Returns a list of users courses to a blank webpage, needs to be processed and saved as classes (also filter for current class)
+        //Returns a list of users courses to a blank webpage, needs to be processed and saved as classes (also filter for 
         public async Task<IActionResult> CanvasList()
         {
             var courses = await _canvasApiService.GetCoursesAsync();
