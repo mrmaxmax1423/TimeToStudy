@@ -9,6 +9,8 @@ using TimeToStudy.Models;
 using Microsoft.AspNetCore.Authorization;
 using RestSharp;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace TimeToStudy.Controllers
 {
@@ -121,7 +123,34 @@ namespace TimeToStudy.Controllers
         public async Task<IActionResult> CanvasList()
         {
             var courses = await _canvasApiService.GetCoursesAsync();
-            return Ok(courses);
+
+            List<dynamic> rawCourses = JsonConvert.DeserializeObject<List<dynamic>>(courses);
+            List<Class> filteredClasses = new List<Class>();
+
+            foreach (dynamic course in rawCourses)
+            {
+                var courseCode = course.course_code?.ToString();
+                if (!string.IsNullOrEmpty(courseCode) && Regex.IsMatch(courseCode, @"^\d{4}"))
+                {
+                    Class canvasClass = new Class
+                    {
+                        //ClassId = course.id,
+                        ClassName = course.name,
+                        ClassStartTime = "",
+                        ClassLength = 3,
+                        CreditHours = 2
+                        //ClassDescription = course.public_description,
+                        //StartDate = course.start_at,
+                        //EndDate = course.end_at
+                    };
+                    context.Classes.Add(canvasClass);
+                    context.SaveChanges();
+                    //Console.WriteLine("Class ID: " + courseInfo.ClassId + " Class Name: " + courseInfo.ClassName + " Start Date: " /* + courseInfo.ClassDescription + " "  + courseInfo.StartDate + " End Date: " + courseInfo.EndDate*/);
+
+                    filteredClasses.Add(canvasClass);
+                }
+            }
+            return RedirectToAction("Classes");
         }
 
         //Nonfunctional, need development to edit and delete events from the database
@@ -132,7 +161,6 @@ namespace TimeToStudy.Controllers
             selected = context.Events.Find(selected.EventId);
             selected.EventDescription = newDesc;
             context.Events.Update(selected);
-            Console.WriteLine("A");
             context.SaveChanges();
 
             return RedirectToAction("Calendar", new { ID = id });
@@ -153,5 +181,4 @@ namespace TimeToStudy.Controllers
         }
         */
     }
-
 }

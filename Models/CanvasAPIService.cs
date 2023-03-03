@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
-public class CanvasApiService
+namespace TimeToStudy.Models
 {
-    private readonly string _baseUrl;
+    public class CanvasApiService
+        {
+        private readonly string _baseUrl;
     private readonly HttpClient _httpClient;
 
     //sets up link, currently uses Constant token and base URL in appsettings.json
@@ -19,11 +24,16 @@ public class CanvasApiService
 
     public async Task<string> GetCoursesAsync()
     {
-        var url = $"{_baseUrl}/api/v1/courses";
+        var url = $"{_baseUrl}/api/v1/courses?enrollment_state=active";
         var response = await _httpClient.GetAsync(url);
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync();
+        String JsonResults = await response.Content.ReadAsStringAsync();
+        //Console.WriteLine(JsonResults);
+
+
+            return(JsonResults);
     }
 
-    // Other API Methods Here
+    // Other API Methods Here 
+    }
 }

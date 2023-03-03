@@ -21,7 +21,12 @@ namespace TimeToStudy.Models
         /* Figure out how to store TimeSpan in DB
         public TimeSpan ClassStartTime { get; set; }
         */
+
+
         public String ClassStartTime { get; set; }
+
+        //[Required(ErrorMessage = "Please input class description.")]
+        //public string? ClassDescription { get; set; }
 
         [Required(ErrorMessage = "Please input class length.")]
         public double ClassLength { get; set; }
@@ -30,5 +35,8 @@ namespace TimeToStudy.Models
         //public List<DateTime> MeetingDays { get; set; }
 
         public double CreditHours { get; set; }
+
+        //public DateTime? StartDate { get; set; }
+        //public DateTime? EndDate { get; set; }
     }
 }
