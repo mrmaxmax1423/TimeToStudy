@@ -21,17 +21,19 @@
                     <th></th>
             </thead>
             <tbody>
-                @foreach (var Class in Model.Classes)
+                @foreach (var C in Model.Classes)
                 {
                     <tr>
-                        <td>@Class.ClassName</td>
-                        <td>@Class.ClassStartTime</td>
-                        <td>@Class.ClassLength Hour(s)</td>
+                        <td>@C.ClassName</td>
+                        <td>@C.ClassStartTime</td>
+                        <td>@C.ClassLength Hour(s)</td>
                         <td>
-                            <form asp-action="ClassInformation" method="post">
-                                <button type=""
+                            <form asp-action="DeleteClass" method="post">
+                                <input type="hidden"
+                                       name="@nameof(Class.ClassId)" value="@C.ClassId" />
+                                <button type="submit"
                                         class="btn btn-primary btn-sm">
-                                    Information
+                                    Delete
                                 </button>
                             </form>
                         </td>
@@ -51,3 +53,18 @@
         </a>
     </div>
 </div>
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+<div id="calendar">
+
+</div>
+<script>
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            // options here
+        });
+    });
+</script>

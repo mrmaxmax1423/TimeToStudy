@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using TimeToStudy.Models;
-using Microsoft.AspNetCore.Authorization;
-using RestSharp;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using TimeToStudy.Models;
 
 namespace TimeToStudy.Controllers
 {
@@ -43,7 +38,7 @@ namespace TimeToStudy.Controllers
             List<Event> events;
             //Fills list with events from DB
             events = context.Events
-                .OrderBy (e => e.EventId).ToList();
+                .OrderBy(e => e.EventId).ToList();
 
             //creates new model with a list of Events
             var model = new EventViewModel
@@ -163,22 +158,39 @@ namespace TimeToStudy.Controllers
             context.Events.Update(selected);
             context.SaveChanges();
 
+
             return RedirectToAction("Calendar", new { ID = id });
         }
 
-        //Only Basics, Needs improvments
         [HttpPost]
         public IActionResult DeleteEvent([FromRoute] string id, Event selectedEvent)
         {
             context.Events.Remove(selectedEvent); //remove selected event from DB
             context.SaveChanges();                //save changes to DB
-            return RedirectToAction("Calendar", new { ID = id } );
+            return RedirectToAction("Calendar", new { ID = id });
         }
-        /*
-        public IActionResult AddNewEvent()
+
+        [HttpPost]
+        public IActionResult DeleteClass([FromRoute] string id, Class selectedClass)
         {
-            return View();
+            context.Classes.Remove(selectedClass); //remove selected event from DB
+            context.SaveChanges();                //save changes to DB
+            return RedirectToAction("Classes", new { ID = id });
         }
-        */
+
+        public IActionResult ScheduleEvents()
+        {
+            var events = context.Events;
+            foreach (var Event in events) //Check all events added by user
+            {
+                if (Event.EventTime == null) //If Event doesn't have a set time
+                {
+                    Event.EventTime = new System.DateTime(2015, 12, 31, 5, 10, 20);
+                    context.Events.Update(Event);
+                }
+            }
+            context.SaveChanges();
+            return RedirectToAction("Classes");
+        }
     }
 }
