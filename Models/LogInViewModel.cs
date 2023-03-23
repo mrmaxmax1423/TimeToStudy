@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Model for displaying login model to user
 namespace TimeToStudy.Models
 {
     public class LogInViewModel

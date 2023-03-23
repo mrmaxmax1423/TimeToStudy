@@ -42,6 +42,8 @@ namespace TimeToStudy
             services.AddScoped<IUserStore<IdentityUser>, UserStore<IdentityUser, IdentityRole, EventContext, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityUserToken<string>, IdentityRoleClaim<string>>>();
 
             services.AddScoped<UserManager<IdentityUser>>();
+
+            services.AddTransient<SeedData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,8 +59,8 @@ namespace TimeToStudy
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            SeedData.Initialize(app.ApplicationServices);
-
+            //SeedData.Initialize(app.ApplicationServices);
+ 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -71,7 +73,7 @@ namespace TimeToStudy
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=LogInLink}/{id?}");
             });
         }
     }

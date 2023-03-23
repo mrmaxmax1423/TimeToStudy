@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TimeToStudy.Models;
 
+//Controller for pages and models regarding Classes and Events
 namespace TimeToStudy.Controllers
 {
     public class EventController : Controller
@@ -23,6 +24,11 @@ namespace TimeToStudy.Controllers
             return View();
         }
 
+        public IActionResult Calendar()
+        {
+            return View();
+        }
+
         public IActionResult AddEvent()
         {
             return View();
@@ -32,7 +38,7 @@ namespace TimeToStudy.Controllers
             return View();
         }
         //Loads the Calendar Page with Events from DB
-        public IActionResult Calendar()
+        public IActionResult Homework()
         {
             //creates a list storing Events
             List<Event> events;
@@ -118,9 +124,9 @@ namespace TimeToStudy.Controllers
         public async Task<IActionResult> CanvasList()
         {
             var courses = await _canvasApiService.GetCoursesAsync();
-
+            //Create a list of courses from the Json
             List<dynamic> rawCourses = JsonConvert.DeserializeObject<List<dynamic>>(courses);
-            List<Class> filteredClasses = new List<Class>();
+            //List<Class> filteredClasses = new List<Class>();
 
             foreach (dynamic course in rawCourses)
             {
@@ -142,7 +148,7 @@ namespace TimeToStudy.Controllers
                     context.SaveChanges();
                     //Console.WriteLine("Class ID: " + courseInfo.ClassId + " Class Name: " + courseInfo.ClassName + " Start Date: " /* + courseInfo.ClassDescription + " "  + courseInfo.StartDate + " End Date: " + courseInfo.EndDate*/);
 
-                    filteredClasses.Add(canvasClass);
+                    //filteredClasses.Add(canvasClass);
                 }
             }
             return RedirectToAction("Classes");
@@ -152,8 +158,11 @@ namespace TimeToStudy.Controllers
         [HttpPost]
         public IActionResult Edit([FromRoute] string id, Event selected)
         {
+            //Needs to use another form to take user input instead of constant string
             string newDesc = "Test";//selected.EventDescription;
+            //whichever event was selected
             selected = context.Events.Find(selected.EventId);
+            //replace description
             selected.EventDescription = newDesc;
             context.Events.Update(selected);
             context.SaveChanges();
@@ -167,7 +176,7 @@ namespace TimeToStudy.Controllers
         {
             context.Events.Remove(selectedEvent); //remove selected event from DB
             context.SaveChanges();                //save changes to DB
-            return RedirectToAction("Calendar", new { ID = id });
+            return RedirectToAction("Homework", new { ID = id });
         }
 
         [HttpPost]

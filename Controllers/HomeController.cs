@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
+//Controller for pages and models regarding the User and Logging in
 namespace TimeToStudy.Controllers
 {
     public class HomeController : Controller
@@ -18,29 +19,29 @@ namespace TimeToStudy.Controllers
         {
             return View();
         }
-        public IActionResult Homework()
-        {
-            return View();
-        }
+
         public IActionResult Profile()
         {
             return View();
         }
 
-            private readonly UserManager<AppUser> _userManager;
-            private readonly SignInManager<AppUser> _signInManager;
-
-            public HomeController(
-                UserManager<AppUser> userManager,
-                SignInManager<AppUser> signInManager)
-            {
-                _userManager = userManager;
-                _signInManager = signInManager;
-            }
-
         public IActionResult LogInLink()
         {
             return View("Login");
+        }
+
+        //Not Functional yet, supposed to handle Users logging in
+        /*
+         
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+
+        public HomeController(
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost]
@@ -65,7 +66,7 @@ namespace TimeToStudy.Controllers
             {
                 return View(model);
             }
-        }
-
+        }   
+        */
     }
 }

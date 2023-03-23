@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
+//Model for storing User information
 namespace TimeToStudy.Models
 {
     public class AppUser : IdentityUser

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+//Model for creating DB
 namespace TimeToStudy.Models
 {
     public class EventContext : IdentityDbContext<IdentityUser>

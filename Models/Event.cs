@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//Model for storing Events
 namespace TimeToStudy.Models
 {
     public class Event
@@ -26,11 +27,4 @@ namespace TimeToStudy.Models
         public DateTime? EventTime { get; set; }
     }
 
-
-    /*
-    public EventViewModel AddEvent()
-    {
-        string EventName = ;
-    }
-    */
 }

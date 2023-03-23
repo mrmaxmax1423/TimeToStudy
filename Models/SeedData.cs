@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//Model for adding initial user
 namespace TimeToStudy.Models
 {
     public class SeedData
