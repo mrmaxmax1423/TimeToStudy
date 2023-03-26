@@ -27,7 +27,7 @@
             <input asp-for="CurrentClass.ClassLength" />
         </div>
         <div>
-            <form >
+            <form>
                 <label for="Meeting Day">Meeting Days:</label>
                 <select name="weekday" id="weekday" multiple>
                     <option value="Monday">Monday</option>
@@ -37,9 +37,9 @@
                     <option value="Friday">Friday</option>
                 </select>
                 <br><br>
-                <input type="submit" value="Submit">
+                <button type="submit" class="btn btn-primary">Add</button>
             </form>
-        </div>
+
         <!-- Needs to be changed to only appear if the user selects Set Time
     <div>
         <label asp-for="CurrentEvent.EventTime">Event Time:</label>
@@ -52,8 +52,7 @@
         <input asp-for="EventTime" />
     </div> -->
 
-        <div>
-            <button type="submit" class="btn btn-primary">Add</button>
+
             <a asp-controller="Event" asp-action="Classes" class="btn btn-primary">Return to Classes</a>
         </div>
     </form>
