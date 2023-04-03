@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj": {}
+    "C:\\Users\\theZo\\OneDrive\\Documents\\GitHub\\TimeToStudy\\TimeToStudy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj": {
+    "C:\\Users\\theZo\\OneDrive\\Documents\\GitHub\\TimeToStudy\\TimeToStudy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj",
+        "projectUniqueName": "C:\\Users\\theZo\\OneDrive\\Documents\\GitHub\\TimeToStudy\\TimeToStudy.csproj",
         "projectName": "TimeToStudy",
-        "projectPath": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\TimeToStudy.csproj",
-        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\Desktop\\TimeToStudy\\obj\\",
+        "projectPath": "C:\\Users\\theZo\\OneDrive\\Documents\\GitHub\\TimeToStudy\\TimeToStudy.csproj",
+        "packagesPath": "C:\\Users\\theZo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\theZo\\OneDrive\\Documents\\GitHub\\TimeToStudy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\theZo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,10 +90,29 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.32, 3.1.32]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -101,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

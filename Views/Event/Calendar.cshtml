@@ -1,3 +1,4 @@
+@model EventViewModel
 <!DOCTYPE html>
 <style>
     table {
@@ -30,8 +31,100 @@
             <button type="submit" class="btn btn-primary btn-sm"> Previous Week </button>
             <button type="submit" class="btn btn-primary btn-sm"> Next Week </button>
         </div>
-        <h2 class="week-label">Week of March 20th, 2023</h2>
+        <script>
+            //I will probably move this to a separate javascript file later
+
+            //get current date information.
+            //date is the full current date, time, and timezone. the rest should be self-explainatory. month has +1 added so that it gives the result from 1-12 instead of 0-11, just to make the result more intuitive.
+            //the dayOfWeek variable will allow us to know what day of the week it is, in case we want to highlight the day or something.
+            const date = new Date();
+            let displayDate = date;
+            const day = displayDate.getDate();
+            const month = displayDate.getMonth() + 1;
+            const year = displayDate.getFullYear();
+            const dayOfWeek = displayDate.getDay();
+            //get month name from month number
+            function getMonthName(month) {
+                const monthName = new Date();
+                displayDate.getMonth(month - 1);
+
+                return displayDate.toLocaleString('en-US', { month: 'long' });
+            }
+            function getWeekdayName(day) {
+                const monthName = new Date();
+                displayDate.getDay(day);
+
+                return displayDate.toLocaleString('en-US', { weekday: 'long' });
+            }
+            //below takes the current date, and finds the date 7 days from now. This should give us the basis for getting new pages into the calendar, but may cause weirdness with it using whatever day of the week it is for future weeks instead of the first day of the week, so if I check it on Wednesday April 12, and hit next week, it will say "Week of April 19th" which isn't wrong, necessarily, but it would probably make more sense to be a Monday or Sunday. However, for a prototype, its good enough for now.
+            let nextWeek = new Date(displayDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+            //day/month/year info for next week:
+            const nextWeekDay = nextWeek.getDate();
+            const nextWeekMonth = nextWeek.getMonth() + 1;
+            const nextWeekYear = nextWeek.getFullYear();
+            //same but for last week
+            let lastWeek = new Date(displayDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const lastWeekDay = lastWeek.getDate();
+            const lastWeekMonth = lastWeek.getMonth() + 1;
+            const lastWeekYear = lastWeek.getFullYear();
+
+            //function to change current date to next week
+            function moveToNextWeek(displayDate) {
+                displayDate = new Date(displayDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+                console.log("Next Week!" + displayDate);
+            }
+            function moveToLastWeek(displayDate) {
+                displayDate = new Date(displayDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+                console.log("Last Week!" + displayDate);
+            }
+            //document.getElementById("weekOf").innerHTML = ("Today is " + getWeekdayName() + ", Week of " + getMonthName() + " " + day + ", " + year);
+
+            //below are some debugging console logs that I should remove later. If you are reading this, then I am dumb and have failed to do so.
+            console.log("Name of Month: " + getMonthName());
+            console.log("Today Date: " + date);
+            console.log("Today Day: " + day);
+            console.log("Today Month: " + month);
+            console.log("Today Year: " + year);
+            console.log("Current Day of Week: " + dayOfWeek)
+            console.log("Next Week: " + nextWeek);
+            console.log("Next Week (day): " + nextWeekDay);
+            console.log("Next Week (month): " + nextWeekMonth);
+            console.log("Next Week (year): " + nextWeekYear);
+            console.log("Last Week: " + lastWeek);
+            console.log("Last Week (day): " + lastWeekDay);
+            console.log("Last Week (month): " + lastWeekMonth);
+            console.log("Last Week (year): " + lastWeekYear);
+        </script>
+        <h2 class="week-label" id="weekOf"><script>document.write("Today is " + getWeekdayName() + ", Week of " + getMonthName() + " " + day + ", " + year);</script></h2>
         <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+        </thead>
+        <tbody>
+                @foreach (Event E in Model.Events)
+                {
+                    <tr>
+                        <td>@E.EventLabel</td>
+                        <td>@E.EventDescription</td>
+                        <td>@E.EventTime</td>
+                        <td>@E.EventLength</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!--<table>
             <thead>
                 <tr>
                     <th>Time</th>
@@ -70,7 +163,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Spanish Quiz: Chapters 1-3</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -108,7 +201,7 @@
                 <tr>
                     <td>2:00 PM</td>
                     <td></td>
-                    <td>Study Group: Weekly Spanish SG</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -147,7 +240,7 @@
                 </tr>
                 <tr>
                     <td>6:00 PM</td>
-                    <td>Presentation: Capstone Presentations</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -163,7 +256,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Dinner: Dinner with Family</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>8:00 PM</td>
@@ -171,13 +264,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Math Test: Calc, Sections 3-6</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>
-                <!--
-    Add more rows for each hour here -->
             </tbody>
         </table>
+        -->
 </body>
 </html>
