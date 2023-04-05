@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+//Model for displaying Events to View Pages
 namespace TimeToStudy.Models
 {
     public class EventViewModel
