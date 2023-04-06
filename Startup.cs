@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeToStudy.Models;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
@@ -29,21 +29,44 @@ namespace TimeToStudy
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<EventContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("EventContext")));
-            services.AddDbContext<EventContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //user login
             services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<EventContext>()
         .AddDefaultTokenProviders();
 
-            services.AddScoped<IUserStore<IdentityUser>, UserStore<IdentityUser, IdentityRole, EventContext, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityUserToken<string>, IdentityRoleClaim<string>>>();
+            services.AddScoped<SignInManager<IdentityUser>>();
+        }
 
-            services.AddScoped<UserManager<IdentityUser>>();
 
-            services.AddTransient<SeedData>();
+        public async Task SeedDatabase(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            // Create the "Member" role if it doesn't already exist
+            if (!await roleManager.RoleExistsAsync("Member"))
+            {
+                var role = new IdentityRole("Member");
+                await roleManager.CreateAsync(role);
+            }
+
+            // Create a new user
+            var user = new IdentityUser
+            {
+                UserName = "MaxTest",
+                Email = "desantmo@mail.uc.edu"
+            };
+
+            // Add the user to the database
+            var result = await userManager.CreateAsync(user, "Test123!");
+
+            if (result.Succeeded)
+            {
+                // Add the user to the "Member" role
+                await userManager.AddToRoleAsync(user, "Member");
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,15 +82,22 @@ namespace TimeToStudy
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            //SeedData.Initialize(app.ApplicationServices);
- 
+
+            //set up a test user
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                SeedDatabase(userManager, roleManager).GetAwaiter().GetResult();
+            }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            //user login
             app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
