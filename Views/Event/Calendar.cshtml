@@ -23,14 +23,63 @@
 
 </head>
 <body>
+    <script>
+        /*
+                    ***********************************************************************************************
+                    ***** THIS SECTION HANDLES VARIABLES FOR WEEK DISPLAY (AND MAYBE FOR CALENDAR GENERATION0 *****
+                    ***********************************************************************************************
+        */
+        const displayDate = new Date(JSON.parse(sessionStorage.getItem("storedDate")));
+        const day = displayDate.getDate();
+        const month = displayDate.getMonth() + 1;
+        const year = displayDate.getFullYear();
+        const dayOfWeek = displayDate.getDay();
+        const weekdayName = displayDate.toLocaleString('en-US', {weekday: 'long'});
+        const monthName = displayDate.toLocaleString('en-US', {month: 'long'});
+    </script>
     <h1>Weekly Calendar</h1>
     <div>
         <div>
-            <button type="submit" class="btn btn-primary btn-sm"> Previous Week </button>
-            <button type="submit" class="btn btn-primary btn-sm"> Next Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnLastWeek"> Previous Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnThisWeek"> Go to current Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnNextWeek"> Next Week </button>
+            <script>
+                /*
+                    **************************************************************************************
+                    ***** THIS SECTION HANDLES LOGIC FOR NEXT WEEK/LAST WEEK/THIS WEEK BUTTON PRESSES*****
+                    **************************************************************************************
+                */
+                //create event listener for next week listener with function that changes week to next.
+                const nextWeekElement = document.getElementById("btnNextWeek");
+				nextWeekElement.addEventListener("click", function() {
+                    //get date from session storage, parse it from string back into Date format, and store it in a new variable
+					var currentTime = new Date(JSON.parse(sessionStorage.getItem("storedDate")));
+                    //make new variable that takes the date we got above, and adds 7 days
+					let nextWeek = new Date(currentTime.getTime() + 7 * 24 * 60 * 60 * 1000);
+                    //replaces date in storage with new date that is 7 days ahead.
+					sessionStorage.setItem("storedDate", JSON.stringify(nextWeek));
+                    //reloads page so that the page is loaded with new date in storage (so that elements update accordingly.)
+					location.reload();
+				});
+                //same code as above, except that it subtracts 7 days instead of adds, for the previous page button.
+                const lastWeekElement = document.getElementById("btnLastWeek");
+				lastWeekElement.addEventListener("click", function() {
+					var currentTime = new Date(JSON.parse(sessionStorage.getItem("storedDate")));
+					let lastWeek = new Date(currentTime.getTime() - 7 * 24 * 60 * 60 * 1000);
+					sessionStorage.setItem("storedDate", JSON.stringify(lastWeek));
+					location.reload();
+				});
+                //This is code for button to go back to todays date, it just replaces the stored date with todays date.
+                const thisWeekElement = document.getElementById("btnThisWeek");
+                thisWeekElement.addEventListener("click", function () {
+					var currentTime = new Date();
+                    sessionStorage.setItem("storedDate", JSON.stringify(currentTime));
+					location.reload();
+				});
+            </script>
         </div>
-
-        <h2 class="week-label">Week of March 20th, 2023</h2>
+        <br />
+        <h2 class="week-label"><script>document.write("Week of " + weekdayName + ", " + monthName + " " + day + ", " + year);</script></h2>
         <style>
             table {
                 border-collapse: collapse;
@@ -79,5 +128,6 @@
                 </tr>
             }
         </table>
+        </div>
 </body>
 </html>
