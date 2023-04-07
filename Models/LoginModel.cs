@@ -60,6 +60,7 @@ namespace TimeToStudy.Models
                 }
                 else
                 {
+                    System.Console.WriteLine("2");
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }

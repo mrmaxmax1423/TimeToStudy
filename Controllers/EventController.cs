@@ -26,7 +26,19 @@ namespace TimeToStudy.Controllers
 
         public IActionResult Calendar()
         {
-            return View();
+            //creates a list storing Events
+            List<Event> events;
+            //Fills list with events from DB in chronological order
+            events = context.Events
+                .OrderBy(e => e.EventTime).ToList();
+
+            //creates new model with a list of Events
+            var model = new EventViewModel
+            {
+                Events = events
+            };
+            //Binds list to view
+            return View(model);
         }
 
         public IActionResult AddEvent()
@@ -37,6 +49,7 @@ namespace TimeToStudy.Controllers
         {
             return View();
         }
+
         //Loads the Calendar Page with Events from DB
         public IActionResult Homework()
         {
@@ -120,7 +133,6 @@ namespace TimeToStudy.Controllers
         //Creates Model holding information for API call to canvas
         private readonly CanvasApiService _canvasApiService;
 
-        //Returns a list of users courses to a blank webpage, needs to be processed and saved as classes (also filter for 
         public async Task<IActionResult> CanvasList()
         {
             var courses = await _canvasApiService.GetCoursesAsync();
