@@ -9,6 +9,14 @@
     <title> Events</title>
 </head>
 <body>
+    <script>
+        //constant variable to store date.
+        const todayDate = new Date();
+        //This is here to initialize/reset the variable for today's date, this variable is used in the calendar page.
+        sessionStorage.setItem("storedDate", JSON.stringify(todayDate));
+        console.log(todayDate);
+        console.log(sessionStorage.getItem("storedDate"));
+    </script>
     <h1>Homework</h1>
 </body>
 <div class="row">
