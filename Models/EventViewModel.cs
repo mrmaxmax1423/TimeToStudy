@@ -10,6 +10,10 @@ namespace TimeToStudy.Models
 {
     public class EventViewModel
     {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime SelectedDate { get; set; }
+
         //allows events to be stored in a list
         public List<Event> Events { get; set; }
 

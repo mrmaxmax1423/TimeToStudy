@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -24,7 +25,7 @@ namespace TimeToStudy.Controllers
             return View();
         }
 
-        public IActionResult Calendar()
+        /*public IActionResult Calendar(DateTime dateTime)
         {
             //creates a list storing Events
             List<Event> events;
@@ -36,6 +37,31 @@ namespace TimeToStudy.Controllers
             var model = new EventViewModel
             {
                 Events = events
+            };
+            //Binds list to view
+            return View(model);
+        }
+        */
+
+        public IActionResult Calendar(DateTime? date)
+        {
+            var startDate = date ?? DateTime.Today;
+            startDate = startDate.Date; //gets rid of hours, mins, etc
+
+            // Calculate the start and end dates for the week that includes the specified date
+
+            //creates a list storing Events
+
+            //Fills list with events from DB in chronological order (in between dates given, avoids searching every event in DB)
+            var events = context.Events.Where(e => e.EventTime >= startDate && e.EventTime < startDate.AddDays(7)).OrderBy(e => e.EventTime).ToList();
+            System.Console.WriteLine(events.Count()); 
+
+            //creates new model with a list of Events
+            var model = new EventViewModel
+            {
+
+                Events = events,
+                SelectedDate = startDate
             };
             //Binds list to view
             return View(model);

@@ -104,6 +104,11 @@ namespace TimeToStudy
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=LogInLink}/{id?}");
+
+                endpoints.MapControllerRoute(
+            name: "calendar",
+            pattern: "calendar/{date}",
+            defaults: new { controller = "EventController", action = "Calendar" });
             });
         }
     }

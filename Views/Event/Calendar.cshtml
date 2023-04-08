@@ -8,53 +8,53 @@
 
     th, td {
         border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-        width: 12.5%;
+        padding: 10px;
+        text-align: center;
     }
 
-    th {
-        background-color: #ccc;
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
     }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
 </style>
+
+    <div class="btn-container">
+        <button id="prev-week-btn">Previous Week</button>
+        <button id="next-week-btn">Next Week</button>
+    </div>
 <html>
 <head>
     <title>Weekly Calendar</title>
 
 </head>
 <body>
+
     <h1>Weekly Calendar</h1>
     <div>
         <div>
-            <button type="submit" class="btn btn-primary btn-sm"> Previous Week </button>
-            <button type="submit" class="btn btn-primary btn-sm"> Next Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnLastWeek"> Previous Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnThisWeek"> Go to current Week </button>
+            <button type="submit" class="btn btn-primary btn-sm" id="btnNextWeek"> Next Week </button>
+
         </div>
+        <br />
+        <h2 class="week-label">
 
-        <h2 class="week-label">Week of March 20th, 2023</h2>
-        <style>
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-
-            th, td {
-                border: 1px solid black;
-                padding: 10px;
-                text-align: center;
-            }
-
-            th {
-                background-color: lightgrey;
-            }
-        </style>
+        </h2>
 
         <table>
             <tr>
                 <th></th>
-                @for (int day = 0; day < 7; day++) //Needs modification to support changing what week is displayed
-                {
-                    //Finds current day, adding one day for every loop
-                    var currentDate = DateTime.Today.AddDays(day);
+                @for (int day = 0; day < 7; day++)
+                {//Needs modification to support changing what week is displayed
+                    var currentDate = Model.SelectedDate.AddDays(day);
 
                     <th>@currentDate.ToString("dddd, MMMM d")</th>
                 }
@@ -66,9 +66,9 @@
                     <td>@hour:00</td>
                     @for (int day = 0; day < 7; day++)
                     {
-                        // Calculate the date for the current day
-                        var currentDate = DateTime.Today.AddDays(day);
-
+                        //Finds day stored in model (defaults to today if no date is passed, like on initial load), adds one day for every loop
+                        var currentDate = Model.SelectedDate.AddDays(day);
+                        System.Console.WriteLine(currentDate);
                         <td>
                             @foreach (Event E in Model.Events.Where(e => e.EventTime.Date == currentDate && e.EventTime.Hour == hour))
                             {
@@ -79,5 +79,37 @@
                 </tr>
             }
         </table>
+
+        <script>
+            //link buttons to html buttons
+            var prevWeekBtn = document.getElementById('prev-week-btn');
+            var nextWeekBtn = document.getElementById('next-week-btn');
+
+            // Attach event listeners to the buttons
+            prevWeekBtn.addEventListener('click', function () {
+                // Calculate the date for the previous week
+                var prevWeekDate = new Date();
+                prevWeekDate.setDate(prevWeekDate.getDate() - 7);
+                prevWeekDate.setHours(0, 0, 0, 0); //start at midnight 
+                // Redirect to the page for the previous week
+                window.location.href = '/Event/Calendar?date=' + prevWeekDate.toISOString();
+            });
+
+            nextWeekBtn.addEventListener('click', function () {
+                // Calculate the date for the next week
+                var nextWeekDate = new Date();
+                nextWeekDate.setHours(0, 0, 0, 0) //start at midnight 
+                nextWeekDate.setDate(nextWeekDate.getDate() + 7);
+
+                // Redirect to the page for the next week
+
+                console.log(nextWeekDate);
+                window.location.href = '/Event/Calendar?date=' + nextWeekDate.toISOString();
+            });
+
+
+        </script>
+
+    </div>
 </body>
 </html>
