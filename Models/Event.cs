@@ -24,7 +24,7 @@ namespace TimeToStudy.Models
         public bool SetTime { get; set; }
 
         //Accept nulls, when generating schedules search for open times for events with null eventtimes
-        public DateTime EventTime { get; set; }
+        public DateTime? EventTime { get; set; }
     }
 
 }

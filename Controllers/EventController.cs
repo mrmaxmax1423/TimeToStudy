@@ -52,8 +52,8 @@ namespace TimeToStudy.Controllers
 
             //creates a list storing Events
 
-            //Fills list with events from DB in chronological order (in between dates given, avoids searching every event in DB)
-            var events = context.Events.Where(e => e.EventTime >= startDate && e.EventTime < startDate.AddDays(7)).OrderBy(e => e.EventTime).ToList();
+            //Fills list with events from DB in chronological order (only in between dates given to avoid searching every event in DB)
+            var events = context.Events.Where(e => e.EventTime != null && e.EventTime >= startDate.Date && e.EventTime < startDate.AddDays(7)).OrderBy(e => e.EventTime).ToList();
             System.Console.WriteLine(events.Count()); 
 
             //creates new model with a list of Events
@@ -126,6 +126,7 @@ namespace TimeToStudy.Controllers
             //if user input is invalid
             else
             {
+                ModelState.AddModelError(string.Empty, "Invalid Input, Try again");
                 return RedirectToAction("AddEvent");
                 /*
                 model.Event = context.Events.ToList();
@@ -143,7 +144,7 @@ namespace TimeToStudy.Controllers
                 context.SaveChanges();
                 return RedirectToAction("AddClass");
             }
-            //if user input is in
+            //if user input is invalid
             else
             {
                 return RedirectToAction("AddClass");

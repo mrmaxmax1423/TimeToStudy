@@ -16,15 +16,15 @@
         <form asp-action="Add" method="post">
             <div>
                 <label asp-for="CurrentEvent.EventLabel">Event Label:</label>
-                <input asp-for="CurrentEvent.EventLabel" />
+                <input type="text" asp-for="CurrentEvent.EventLabel"  minlength="5" maxlength="14" required/>
             </div>
             <div>
                 <label asp-for="CurrentEvent.EventDescription">Description:</label>
-                <input asp-for="CurrentEvent.EventDescription" />
+                <input asp-for="CurrentEvent.EventDescription" minlength="4" maxlength="30" required/>
             </div>
             <div>
-                <label asp-for="CurrentEvent.EventLength">Length:</label>
-                <input asp-for="CurrentEvent.EventLength" />
+                <label asp-for="CurrentEvent.EventLength">Length (In Hours):</label>
+                <input type ="number" asp-for="CurrentEvent.EventLength"  min=".25" step=".01" max="12" required/>
             </div>
             <div>
                 <label asp-for="CurrentEvent.Reccuring">Reccuring?</label>
@@ -52,7 +52,6 @@
                 <label asp-for="CurrentEvent.SetTime">Set Time?</label>
                 <input type="checkbox" name="yourPropertyName" id="gridCheck1" value="false" unchecked />
             </div>
-            <!-- Needs to be changed to only appear if the user selects Set Time        -->
             <div id="ShowHideMe" style="display:none">
                 <label asp-for="CurrentEvent.EventTime">Event Time:</label>
                 <input asp-for=" CurrentEvent.EventTime">
