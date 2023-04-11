@@ -55,12 +55,12 @@ namespace TimeToStudy
             // Create a new user
             var user = new IdentityUser
             {
-                UserName = "MaxTest",
-                Email = "desantmo@mail.uc.edu"
+                UserName = "ITExpo",
+                Email = "TimeToStudy@uc"
             };
 
             // Add the user to the database
-            var result = await userManager.CreateAsync(user, "Test123!");
+            var result = await userManager.CreateAsync(user, "ITExpo2023!");
 
             if (result.Succeeded)
             {

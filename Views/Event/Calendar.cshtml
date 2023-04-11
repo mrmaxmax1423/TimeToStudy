@@ -57,7 +57,7 @@
                     {
                         //Finds day stored in model (defaults to today if no date is passed, like on initial load), adds one day for every loop
                         var currentDate = Model.SelectedDate.AddDays(day);
-                        System.Console.WriteLine(currentDate);
+                        //System.Console.WriteLine(currentDate);
                 <td>
                     @foreach (Event E in Model.Events.Where(e => e.EventTime.Value.Date == currentDate && e.EventTime.Value.Hour == hour))
                     {

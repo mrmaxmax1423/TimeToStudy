@@ -16,29 +16,19 @@
     <form asp-action="InputClass" method="post">
         <div>
             <label asp-for="CurrentClass.ClassName">Class Name:</label>
-            <input asp-for="CurrentClass.ClassName" />
+            <input asp-for="CurrentClass.ClassName" required/>
         </div>
         <div>
-            <label asp-for="CurrentClass.ClassStartTime">Class Start Time:</label>
-            <input asp-for="CurrentClass.ClassStartTime" />
+            <label asp-for="CurrentClass.ClassDescription">Class Description:</label>
+            <input asp-for="CurrentClass.ClassDescription" required/>
         </div>
         <div>
-            <label asp-for="CurrentClass.ClassLength">Length:</label>
-            <input asp-for="CurrentClass.ClassLength" />
+            <label asp-for="CurrentClass.MeetingTime">Meeting Time:</label>
+            <input asp-for="CurrentClass.MeetingTime"  min="2023-04-09T23:59" max="2023-04-15T23:59"/>
         </div>
         <div>
-            <form>
-                <label for="Meeting Day">Meeting Days:</label>
-                <select name="weekday" id="weekday" multiple>
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                </select>
-                <br><br>
                 <button type="submit" class="btn btn-primary">Add</button>
-            </form>
+
 
         <!-- Needs to be changed to only appear if the user selects Set Time
     <div>

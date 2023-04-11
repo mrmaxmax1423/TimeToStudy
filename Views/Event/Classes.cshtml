@@ -1,60 +1,127 @@
 ﻿@{
     ViewData["Title"] = "Classes";
 }
+@model EventViewModel
 <body>
+
     <h1>Classes</h1>
     <div>
-        <form asp-controller="Event" asp-action="AddClass">
-            <button type="submit" class="btn btn-primary btn-sm"> Input Class </button>
-        </form>
-        <form asp-controller="Event" asp-action="CanvasList">
+        <a asp-controller="Event" asp-action="AddClass" class="btn btn-primary">Add Class</a>
+        <a asp-controller="Event" asp-action="CanvasList" class="btn btn-primary">Import Classes</a>
             <img class="" src="~/images/CanvasIcon.png" alt="Import From Canvas Button" width="70" height="70" />
-            <button type="submit" class="btn btn-primary btn-sm"> Import  </button>
-        </form>
     </div>
 </body>
 <div>
-
     <div id="div1" style="padding:0px;float:left" class="col-sm-10">
-        <table style="width:100%" class="table table-bordered table-striped">
+        <table style="width: 150%; overflow:auto;" class="table table-bordered table-striped">
             <colgroup>
-                <col span="1" style="width: 50%;">
-                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 40%;">
                 <col span="1" style="width: 20%;">
                 <col span="1" style="width: 10%;">
             </colgroup>
             <thead>
                 <tr>
                     <th>Class Name</th>
-                    <th>Meeting Day(s)</th>
-                    <th>Start Time</th>
-                    <th>Course Length</th>
-                    <th>Credit Hours</th>
+                    <th>Description</th>
+                    <th>Meeting Time</th>
+                    <th>Assignments</th>
             </thead>
             <tbody>
                 @foreach (var C in Model.Classes)
                 {
-                    <tr>
-                        <td>@C.ClassName</td>
-                        <td>@C.ClassStartTime</td>
-                        <td> Hour(s)</td>
-                        <td></td>
+                <tr>
+                    <td>@C.ClassName</td>
+                    @if (C.ClassDescription != null)
+                    {
+                        <td>@C.ClassDescription</td>
+                    }
+                    else
+                    {
+                <td>
+                    <form asp-action="AddClassDescription" method="post">
+                        <input type="hidden"
+                               name="@nameof(Class.ClassId)" value="@C.ClassId" />
+                        <label for="newMeetingTime"></label>
+                        <input type="text" name="newDescription" for=" CurrentClass.ClassDescription" id="newDescription" required>
+                        <button type="submit"
+                                class="btn btn-primary btn-sm">
+                            Add Class Description
+                        </button>
+                    </form>
+                </td>
+                    }
+
+                    @if (C.MeetingTime == null)
+                    {
                         <td>
-                            <form asp-action="DeleteClass" method="post">
+                            <form asp-action="AddClassTime" method="post">
                                 <input type="hidden"
                                        name="@nameof(Class.ClassId)" value="@C.ClassId" />
+                                <label for="newMeetingTime"></label>
+                                <input type="datetime-local" name="newMeetingTime" for=" CurrentClass.MeetingTime" id="newMeetingTime" min="2023-04-09T23:59" max="2023-04-15T23:59" required>
                                 <button type="submit"
                                         class="btn btn-primary btn-sm">
-                                    Delete
+                                    Add Class Time
                                 </button>
                             </form>
                         </td>
-                    </tr>
+                    }
+                    else
+                    {
+                        <td>
+                            @if (C.MeetingTime != null)
+                            {
+                                string meetT = C.MeetingTime.Value.ToString("ddd h:mm tt");
+                                <p>@meetT</p>
+                            }
+
+                        </td>
+
+                    }
+                    <td>
+                        @if (C.CanvasId != null && !C.Imported)
+                        {
+                            <form asp-action="CanvasAssignments" method="post">
+                                <input type="hidden"
+                                       name="@nameof(C.CanvasId)" value="@C.CanvasId" />
+                                <input type="hidden"
+                                       name="@nameof(C.Imported)" value="@C.Imported" />
+                                <input type="hidden"
+                                       name="@nameof(C.ClassId)" value="@C.ClassId" />
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm">
+                                    Import Assignments
+                                </button>
+                            </form>
+                        }
+                        @if (C.CanvasId != null && C.Imported)
+                        {
+                            <div> View in Assignments Page </div>
+                        }
+                        @if (C.CanvasId == null)
+                        {
+                            <div>
+                                <a asp-controller="Event" asp-action="Homework" class="btn btn-primary">Add Assignments</a>
+                            </div>
+                        }
+
+                    </td>
+                    <td>
+                        <form asp-action="DeleteClass" method="post">
+                            <input type="hidden"
+                                   name="@nameof(Class.ClassId)" value="@C.ClassId" />
+                            <button type="submit"
+                                    class="btn btn-primary btn-sm">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
     </div>
-    </br>
 </div>
 
 

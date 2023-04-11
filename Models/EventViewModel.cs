@@ -20,8 +20,7 @@ namespace TimeToStudy.Models
         public List<Class> Classes { get; set; }
         //stores event being added in AddEvent
         public Event CurrentEvent { get; set; }
-
-        //stores class being manually added
         public Class CurrentClass { get; set; }
+
     }
 }

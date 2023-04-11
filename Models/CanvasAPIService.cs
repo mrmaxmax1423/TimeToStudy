@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 //Model for connecting to Canvas API
 namespace TimeToStudy.Models
@@ -38,7 +39,22 @@ namespace TimeToStudy.Models
 
         return(JsonResults);
     }
+        public async Task<string> GetCourseAssignments(int courseID)
+        {
+            //Console.WriteLine(usersId);
+            //API pull for currently enrolled courses
+            var url = $"{_baseUrl}/api/v1/courses/{courseID}/assignments";
+            //wait and ensure successful response
+            var response = await _httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            //create a String of the resulting Json
+            String JsonResults = await response.Content.ReadAsStringAsync();
 
-    // Other API Methods Here 
+            //Uncomment to see API Results 
+            //Console.WriteLine(JsonResults);
+
+            return (JsonResults);
+        }
+        // Other API Methods Here 
     }
 }
